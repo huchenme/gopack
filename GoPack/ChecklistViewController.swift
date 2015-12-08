@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import MaterialKit
 
 class ChecklistViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: FabButton!
 
     let items = [
+        Item(title: "test title", note: nil, status: .Active),
+        Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
+        Item(title: "Battery", note: nil, status: .Completed),
+        Item(title: "good stuff", note: nil, status: .Active),
+        Item(title: "test title", note: nil, status: .Active),
+        Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
+        Item(title: "Battery", note: nil, status: .Completed),
+        Item(title: "good stuff", note: nil, status: .Active),
         Item(title: "test title", note: nil, status: .Active),
         Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
         Item(title: "Battery", note: nil, status: .Completed),
@@ -21,6 +31,8 @@ class ChecklistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

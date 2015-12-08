@@ -17,6 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXl-ct-GdQ" customClass="FabButton" customModule="MaterialKit">
+                                <rect key="frame" x="530" y="530" width="55" height="55"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.85882352941176465" green="0.26666666666666666" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="QL5-ZF-8FU"/>
+                                    <constraint firstAttribute="height" constant="55" id="pim-AN-wLu"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="plus white"/>
+                                <state key="highlighted" image="plus white"/>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5S5-R8-U1h" customClass="Check">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
@@ -99,20 +111,17 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dXl-ct-GdQ" secondAttribute="bottom" constant="15" id="1jC-S4-OgY"/>
                             <constraint firstAttribute="trailing" secondItem="5S5-R8-U1h" secondAttribute="trailing" id="2t1-VC-8TP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5S5-R8-U1h" secondAttribute="bottom" id="HCL-hf-VPI"/>
-                            <constraint firstItem="5S5-R8-U1h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KaG-fA-2nO"/>
+                            <constraint firstAttribute="trailing" secondItem="dXl-ct-GdQ" secondAttribute="trailing" constant="15" id="Iwy-fV-rmw"/>
                             <constraint firstItem="5S5-R8-U1h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="aDh-ON-1KH"/>
                             <constraint firstItem="5S5-R8-U1h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fwH-Pa-6qG"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="KaG-fA-2nO"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="r9q-q4-gpZ"/>
                     <connections>
+                        <outlet property="addButton" destination="dXl-ct-GdQ" id="Bvc-q9-7Lj"/>
                         <outlet property="tableView" destination="5S5-R8-U1h" id="lyx-Mz-1P0"/>
                     </connections>
                 </viewController>
@@ -142,6 +151,7 @@
     </scenes>
     <resources>
         <image name="hidden" width="22" height="19"/>
+        <image name="plus white" width="22" height="22"/>
         <image name="unchecked" width="40" height="40"/>
     </resources>
 </document>
