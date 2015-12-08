@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770D69A51C178DD80060FC0A /* Format.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A31C178DD80060FC0A /* Format.framework */; };
+		770D69A61C178DD80060FC0A /* MaterialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A41C178DD80060FC0A /* MaterialKit.framework */; };
+		770D69AA1C1799AD0060FC0A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A81C1799AD0060FC0A /* Realm.framework */; };
+		770D69AB1C1799AD0060FC0A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A91C1799AD0060FC0A /* RealmSwift.framework */; };
 		77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */; };
 		77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */; };
 		77CDCDE31C0DC83900E496BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE11C0DC83900E496BD /* Main.storyboard */; };
-		77CDCDE61C0DC83900E496BD /* GoPack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDE41C0DC83900E496BD /* GoPack.xcdatamodeld */; };
 		77CDCDE81C0DC83900E496BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE71C0DC83900E496BD /* Assets.xcassets */; };
 		77CDCDEB1C0DC83900E496BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE91C0DC83900E496BD /* LaunchScreen.storyboard */; };
 		77CDCDF61C0DC83900E496BD /* GoPackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDF51C0DC83900E496BD /* GoPackTests.swift */; };
@@ -37,11 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770D69A31C178DD80060FC0A /* Format.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Format.framework; path = Carthage/Build/iOS/Format.framework; sourceTree = "<group>"; };
+		770D69A41C178DD80060FC0A /* MaterialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaterialKit.framework; path = Carthage/Build/iOS/MaterialKit.framework; sourceTree = "<group>"; };
+		770D69A81C1799AD0060FC0A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		770D69A91C1799AD0060FC0A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		77CDCDDA1C0DC83900E496BD /* GoPack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		77CDCDE21C0DC83900E496BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		77CDCDE51C0DC83900E496BD /* GoPack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoPack.xcdatamodel; sourceTree = "<group>"; };
 		77CDCDE71C0DC83900E496BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77CDCDEA1C0DC83900E496BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77CDCDEC1C0DC83900E496BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,7 +57,7 @@
 		77CDCDFC1C0DC83900E496BD /* GoPackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoPackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCE001C0DC83900E496BD /* GoPackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPackUITests.swift; sourceTree = "<group>"; };
 		77CDCE021C0DC83900E496BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77CDCE0E1C0FC51400E496BD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		77CDCE0E1C0FC51400E496BD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = GoPack/Item.swift; sourceTree = SOURCE_ROOT; };
 		77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770D69A51C178DD80060FC0A /* Format.framework in Frameworks */,
+				770D69A61C178DD80060FC0A /* MaterialKit.framework in Frameworks */,
+				770D69AA1C1799AD0060FC0A /* Realm.framework in Frameworks */,
+				770D69AB1C1799AD0060FC0A /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +93,10 @@
 		77CDCDD11C0DC83900E496BD = {
 			isa = PBXGroup;
 			children = (
+				770D69A81C1799AD0060FC0A /* Realm.framework */,
+				770D69A91C1799AD0060FC0A /* RealmSwift.framework */,
+				770D69A31C178DD80060FC0A /* Format.framework */,
+				770D69A41C178DD80060FC0A /* MaterialKit.framework */,
 				77CDCDDC1C0DC83900E496BD /* GoPack */,
 				77CDCDF41C0DC83900E496BD /* GoPackTests */,
 				77CDCDFF1C0DC83900E496BD /* GoPackUITests */,
@@ -111,7 +125,6 @@
 				77CDCDE71C0DC83900E496BD /* Assets.xcassets */,
 				77CDCDE91C0DC83900E496BD /* LaunchScreen.storyboard */,
 				77CDCDEC1C0DC83900E496BD /* Info.plist */,
-				77CDCDE41C0DC83900E496BD /* GoPack.xcdatamodeld */,
 			);
 			path = GoPack;
 			sourceTree = "<group>";
@@ -144,6 +157,7 @@
 				77CDCDD61C0DC83900E496BD /* Sources */,
 				77CDCDD71C0DC83900E496BD /* Frameworks */,
 				77CDCDD81C0DC83900E496BD /* Resources */,
+				770D69A71C178E110060FC0A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -263,13 +277,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		770D69A71C178E110060FC0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Format.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MaterialKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		77CDCDD61C0DC83900E496BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */,
-				77CDCDE61C0DC83900E496BD /* GoPack.xcdatamodeld in Sources */,
 				77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */,
 				77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */,
 				77CDCE0F1C0FC51400E496BD /* Item.swift in Sources */,
@@ -414,6 +447,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GoPack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.huchen.GoPack;
@@ -426,6 +463,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GoPack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.huchen.GoPack;
@@ -501,6 +542,7 @@
 				77CDCE071C0DC83900E496BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77CDCE081C0DC83900E496BD /* Build configuration list for PBXNativeTarget "GoPackTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +551,7 @@
 				77CDCE0A1C0DC83900E496BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77CDCE0B1C0DC83900E496BD /* Build configuration list for PBXNativeTarget "GoPackUITests" */ = {
 			isa = XCConfigurationList;
@@ -517,21 +560,9 @@
 				77CDCE0D1C0DC83900E496BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		77CDCDE41C0DC83900E496BD /* GoPack.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				77CDCDE51C0DC83900E496BD /* GoPack.xcdatamodel */,
-			);
-			currentVersion = 77CDCDE51C0DC83900E496BD /* GoPack.xcdatamodel */;
-			path = GoPack.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 77CDCDD21C0DC83900E496BD /* Project object */;
 }

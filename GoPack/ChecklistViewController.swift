@@ -11,7 +11,7 @@ import UIKit
 class ChecklistViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+
     let items = [
         Item(title: "test title", note: nil, status: .Active),
         Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
