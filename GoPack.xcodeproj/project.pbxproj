@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */; };
-		77CDCDE01C0DC83900E496BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ViewController.swift */; };
+		77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */; };
 		77CDCDE31C0DC83900E496BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE11C0DC83900E496BD /* Main.storyboard */; };
 		77CDCDE61C0DC83900E496BD /* GoPack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDE41C0DC83900E496BD /* GoPack.xcdatamodeld */; };
 		77CDCDE81C0DC83900E496BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE71C0DC83900E496BD /* Assets.xcassets */; };
 		77CDCDEB1C0DC83900E496BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE91C0DC83900E496BD /* LaunchScreen.storyboard */; };
 		77CDCDF61C0DC83900E496BD /* GoPackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDF51C0DC83900E496BD /* GoPackTests.swift */; };
 		77CDCE011C0DC83900E496BD /* GoPackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCE001C0DC83900E496BD /* GoPackUITests.swift */; };
+		77CDCE0F1C0FC51400E496BD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCE0E1C0FC51400E496BD /* Item.swift */; };
+		77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		77CDCDDA1C0DC83900E496BD /* GoPack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		77CDCDDF1C0DC83900E496BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		77CDCDE21C0DC83900E496BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77CDCDE51C0DC83900E496BD /* GoPack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoPack.xcdatamodel; sourceTree = "<group>"; };
 		77CDCDE71C0DC83900E496BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		77CDCDFC1C0DC83900E496BD /* GoPackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoPackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCE001C0DC83900E496BD /* GoPackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPackUITests.swift; sourceTree = "<group>"; };
 		77CDCE021C0DC83900E496BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77CDCE0E1C0FC51400E496BD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,10 @@
 		77CDCDDC1C0DC83900E496BD /* GoPack */ = {
 			isa = PBXGroup;
 			children = (
+				77CDCE0E1C0FC51400E496BD /* Item.swift */,
 				77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */,
-				77CDCDDF1C0DC83900E496BD /* ViewController.swift */,
+				77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */,
+				77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */,
 				77CDCDE11C0DC83900E496BD /* Main.storyboard */,
 				77CDCDE71C0DC83900E496BD /* Assets.xcassets */,
 				77CDCDE91C0DC83900E496BD /* LaunchScreen.storyboard */,
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */,
 				77CDCDE61C0DC83900E496BD /* GoPack.xcdatamodeld in Sources */,
-				77CDCDE01C0DC83900E496BD /* ViewController.swift in Sources */,
+				77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */,
 				77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */,
+				77CDCE0F1C0FC51400E496BD /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +418,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.huchen.GoPack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -421,6 +430,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.huchen.GoPack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
