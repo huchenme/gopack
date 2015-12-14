@@ -7,40 +7,57 @@
 //
 
 import UIKit
+import RealmSwift
 import MaterialKit
 
 class ChecklistViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: FabButton!
-
-    let items = [
-        Item(title: "test title", note: nil, status: .Active),
-        Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
-        Item(title: "Battery", note: nil, status: .Completed),
-        Item(title: "good stuff", note: nil, status: .Active),
-        Item(title: "test title", note: nil, status: .Active),
-        Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
-        Item(title: "Battery", note: nil, status: .Completed),
-        Item(title: "good stuff", note: nil, status: .Active),
-        Item(title: "test title", note: nil, status: .Active),
-        Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long", status: .Hidden),
-        Item(title: "Battery", note: nil, status: .Completed),
-        Item(title: "good stuff", note: nil, status: .Active)
-    ]
+    
+    let realm = try! Realm()
+    lazy var items: Results<Item> = { self.realm.objects(Item) }()
+    
+    //FIXME: Remove me in production
+    func populateDefaultItems() {
+        if items.count == 0 {
+            try! realm.write() {
+                self.realm.add(Item(title: "test title"))
+                var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
+                item.status = .Hidden
+                self.realm.add(item)
+                item = Item(title: "Battery")
+                item.status = .Completed
+                self.realm.add(item)
+            }
+            
+            items = realm.objects(Item)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateDefaultItems()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        
+        reloadData()
+    }
+    
+    func reloadData() {
+        items = realm.objects(Item)
+        tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
     }
-
-
+    
+    @IBAction func addButtonClicked(sender: AnyObject) {
+        performSegueWithIdentifier("ShowItemDetail", sender: nil)
+    }
+    
 }
 
 extension ChecklistViewController: UITableViewDelegate {
@@ -60,6 +77,15 @@ extension ChecklistViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowItemDetail", let nav = segue.destinationViewController as? UINavigationController, let dc = nav.topViewController as? ItemDetailViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
+                let item = items[indexPath.row]
+                dc.item = item
+            }
+        }
     }
 }
 

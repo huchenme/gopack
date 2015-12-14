@@ -11,6 +11,7 @@
 		770D69A61C178DD80060FC0A /* MaterialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A41C178DD80060FC0A /* MaterialKit.framework */; };
 		770D69AA1C1799AD0060FC0A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A81C1799AD0060FC0A /* Realm.framework */; };
 		770D69AB1C1799AD0060FC0A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A91C1799AD0060FC0A /* RealmSwift.framework */; };
+		77B1D7911C1D5B650037854E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */; };
 		77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */; };
 		77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */; };
 		77CDCDE31C0DC83900E496BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDCDE11C0DC83900E496BD /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		770D69A41C178DD80060FC0A /* MaterialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaterialKit.framework; path = Carthage/Build/iOS/MaterialKit.framework; sourceTree = "<group>"; };
 		770D69A81C1799AD0060FC0A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		770D69A91C1799AD0060FC0A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		77CDCDDA1C0DC83900E496BD /* GoPack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
@@ -90,13 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		77CDCDD11C0DC83900E496BD = {
+		77B1D7921C1DBA930037854E /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
 				770D69A81C1799AD0060FC0A /* Realm.framework */,
 				770D69A91C1799AD0060FC0A /* RealmSwift.framework */,
 				770D69A31C178DD80060FC0A /* Format.framework */,
 				770D69A41C178DD80060FC0A /* MaterialKit.framework */,
+			);
+			name = Carthage;
+			sourceTree = "<group>";
+		};
+		77CDCDD11C0DC83900E496BD = {
+			isa = PBXGroup;
+			children = (
+				77B1D7921C1DBA930037854E /* Carthage */,
 				77CDCDDC1C0DC83900E496BD /* GoPack */,
 				77CDCDF41C0DC83900E496BD /* GoPackTests */,
 				77CDCDFF1C0DC83900E496BD /* GoPackUITests */,
@@ -119,6 +129,7 @@
 			children = (
 				77CDCE0E1C0FC51400E496BD /* Item.swift */,
 				77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */,
+				77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */,
 				77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */,
 				77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */,
 				77CDCDE11C0DC83900E496BD /* Main.storyboard */,
@@ -302,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B1D7911C1D5B650037854E /* ItemDetailViewController.swift in Sources */,
 				77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */,
 				77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */,
 				77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */,

@@ -6,21 +6,32 @@
 //  Copyright © 2015 Hu Chen. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import RealmSwift
 
-enum ItemStatus {
-    case Active
-    case Completed
-    case Hidden
+enum ItemStatus: Int {
+    case Active = 0
+    case Completed = 1
+    case Hidden = 2
 }
 
-struct Item {
-    var title: String
-    var note: String?
-    var status = ItemStatus.Active
-//    
-//    init(title: String) {
-//        self.title = title
-//        self.hidden = false
-//    }
+class Item: Object {
+    dynamic var title = ""
+    dynamic var note: String?
+    dynamic var statusValue: Int = ItemStatus.Active.rawValue
+    
+    convenience init(title: String, note: String? = nil) {
+        self.init()
+        self.title = title
+        self.note = note
+    }
+    
+    var status: ItemStatus {
+        get {
+            return ItemStatus(rawValue: statusValue) ?? ItemStatus.Active
+        }
+        set {
+            self.statusValue = newValue.rawValue
+        }
+    }
 }
