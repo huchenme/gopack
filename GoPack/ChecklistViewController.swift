@@ -24,10 +24,10 @@ class ChecklistViewController: UIViewController {
             try! realm.write() {
                 self.realm.add(Item(title: "test title"))
                 var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
-                item.status = .Hidden
+                item.hidden = true
                 self.realm.add(item)
                 item = Item(title: "Battery")
-                item.status = .Completed
+                item.completed = true
                 self.realm.add(item)
             }
             
@@ -57,7 +57,6 @@ class ChecklistViewController: UIViewController {
     @IBAction func addButtonClicked(sender: AnyObject) {
         performSegueWithIdentifier("ShowItemDetail", sender: nil)
     }
-    
 }
 
 extension ChecklistViewController: UITableViewDelegate {
@@ -99,9 +98,21 @@ extension ChecklistViewController: UITableViewDataSource {
         
         if let checklistItemCell = cell as? ChecklistItemCell {
             checklistItemCell.item = items[indexPath.row]
+            checklistItemCell.delegate = self
+            checklistItemCell.indexPath = indexPath
         }
         
         return cell
     }
 }
 
+
+extension ChecklistViewController: ChecklistItemCellDelegate {
+    func onCheckButtonClickedAtIndex(indexPath: NSIndexPath) {
+        try! realm.write() {
+            let item = self.items[indexPath.row]
+            item.completed = !item.completed
+        }
+        tableView.reloadData()
+    }
+}

@@ -39,6 +39,9 @@
                                                                 <constraint firstAttribute="width" constant="40" id="pwU-xS-dgs"/>
                                                             </constraints>
                                                             <state key="normal" image="unchecked"/>
+                                                            <connections>
+                                                                <action selector="onCheckButtonClicked:" destination="w7T-yR-EUx" eventType="touchUpInside" id="42l-Ye-OtV"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Dly-a4-c61">
                                                             <rect key="frame" x="56" y="0.0" width="474" height="40"/>
@@ -150,6 +153,9 @@
                                                                 <constraint firstAttribute="height" constant="40" id="EUJ-FA-D9J"/>
                                                             </constraints>
                                                             <state key="normal" image="unchecked"/>
+                                                            <connections>
+                                                                <action selector="onCheckButtonClicked:" destination="Q7W-9s-Bx6" eventType="touchUpInside" id="eqf-Lg-6IF"/>
+                                                            </connections>
                                                         </button>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-4C-hCZ">
                                                             <rect key="frame" x="56" y="9" width="512" height="22"/>
@@ -200,10 +206,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mmJ-cJ-dHM">
-                                                    <rect key="frame" x="16" y="13" width="568" height="22"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mmJ-cJ-dHM">
+                                                    <rect key="frame" x="16" y="11" width="568" height="22"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" trash" translatesAutoresizingMaskIntoConstraints="NO" id="OAS-22-4rw">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash" translatesAutoresizingMaskIntoConstraints="NO" id="OAS-22-4rw">
                                                             <rect key="frame" x="0.0" y="2" width="14" height="18"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Delete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTp-Ka-ReE">
@@ -243,6 +249,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="checkButton" destination="cQL-Ph-8C9" id="6vN-Nr-LPi"/>
                         <outlet property="itemTitleTextField" destination="cC2-4C-hCZ" id="c4d-ab-Lrh"/>
                         <outlet property="saveButton" destination="H1y-Ip-1gJ" id="fAl-Af-4Zd"/>
                     </connections>
@@ -290,9 +297,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name=" trash" width="14" height="18"/>
         <image name="hidden" width="22" height="19"/>
         <image name="plus white" width="22" height="22"/>
+        <image name="trash" width="14" height="18"/>
         <image name="unchecked" width="40" height="40"/>
     </resources>
 </document>

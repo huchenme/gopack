@@ -9,29 +9,15 @@
 import Foundation
 import RealmSwift
 
-enum ItemStatus: Int {
-    case Active = 0
-    case Completed = 1
-    case Hidden = 2
-}
-
 class Item: Object {
     dynamic var title = ""
     dynamic var note: String?
-    dynamic var statusValue: Int = ItemStatus.Active.rawValue
+    dynamic var completed = false
+    dynamic var hidden = false
     
     convenience init(title: String, note: String? = nil) {
         self.init()
         self.title = title
         self.note = note
-    }
-    
-    var status: ItemStatus {
-        get {
-            return ItemStatus(rawValue: statusValue) ?? ItemStatus.Active
-        }
-        set {
-            self.statusValue = newValue.rawValue
-        }
     }
 }

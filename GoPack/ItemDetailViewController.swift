@@ -13,6 +13,9 @@ class ItemDetailViewController: UITableViewController {
 
     @IBOutlet weak var itemTitleTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var checkButton: UIButton!
+    
+    var completed = false
     
     let realm = try! Realm()
     
@@ -26,9 +29,20 @@ class ItemDetailViewController: UITableViewController {
             self.title = ""
             itemTitleTextField.text = item.title
             saveButton.enabled = true
+            completed = item.completed
         } else {
             itemTitleTextField.becomeFirstResponder()
             numberOfSection = 2
+        }
+        setCheckButtonImage()
+        
+    }
+    
+    func setCheckButtonImage() {
+        if completed {
+            checkButton.setImage(UIImage(named: "checked"), forState: .Normal)
+        } else {
+            checkButton.setImage(UIImage(named: "unchecked"), forState: .Normal)
         }
     }
     
@@ -50,8 +64,10 @@ class ItemDetailViewController: UITableViewController {
         try! realm.write() {
             if let item = self.item {
                 item.title = title
+                item.completed = self.completed
             } else {
                 let newItem = Item(title: title)
+                newItem.completed = self.completed
                 self.realm.add(newItem)
             }
         }
@@ -64,6 +80,11 @@ class ItemDetailViewController: UITableViewController {
         } else {
             saveButton.enabled = false
         }
+    }
+    
+    @IBAction func onCheckButtonClicked(sender: UIButton) {
+        completed = !completed
+        setCheckButtonImage()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
