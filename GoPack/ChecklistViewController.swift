@@ -57,6 +57,21 @@ class ChecklistViewController: UIViewController {
     @IBAction func addButtonClicked(sender: AnyObject) {
         performSegueWithIdentifier("ShowItemDetail", sender: nil)
     }
+    
+    @IBAction func resetButtonClicked(sender: AnyObject) {
+        let alert = UIAlertController(title: "Are you sure?", message: "We will reset everthing for you", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            try! self.realm.write() {
+                for item in self.items {
+                    item.completed = false
+                    item.hidden = false
+                }
+            }
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 extension ChecklistViewController: UITableViewDelegate {

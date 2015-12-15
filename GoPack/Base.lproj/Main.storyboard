@@ -115,7 +115,13 @@
                             <constraint firstItem="5S5-R8-U1h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fwH-Pa-6qG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="r9q-q4-gpZ"/>
+                    <navigationItem key="navigationItem" id="r9q-q4-gpZ">
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="SuK-Wj-i0F">
+                            <connections>
+                                <action selector="resetButtonClicked:" destination="BYZ-38-t0r" id="Mzr-CJ-QaW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="dXl-ct-GdQ" id="Bvc-q9-7Lj"/>
                         <outlet property="tableView" destination="5S5-R8-U1h" id="lyx-Mz-1P0"/>
