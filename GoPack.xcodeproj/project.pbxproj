@@ -11,6 +11,11 @@
 		770D69A61C178DD80060FC0A /* MaterialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A41C178DD80060FC0A /* MaterialKit.framework */; };
 		770D69AA1C1799AD0060FC0A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A81C1799AD0060FC0A /* Realm.framework */; };
 		770D69AB1C1799AD0060FC0A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770D69A91C1799AD0060FC0A /* RealmSwift.framework */; };
+		775F02141C204BD0009764C3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02131C204BD0009764C3 /* Category.swift */; };
+		775F02161C2053AA009764C3 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02151C2053AA009764C3 /* CategoryListViewController.swift */; };
+		775F02181C20613C009764C3 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02171C20613C009764C3 /* CategoryDetailViewController.swift */; };
+		775F021D1C20DFD5009764C3 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F021C1C20DFD5009764C3 /* CategoryCell.swift */; };
+		775F02211C21AE5E009764C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02201C21AE5E009764C3 /* Constants.swift */; };
 		77B1D7911C1D5B650037854E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */; };
 		77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */; };
 		77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */; };
@@ -45,6 +50,11 @@
 		770D69A41C178DD80060FC0A /* MaterialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaterialKit.framework; path = Carthage/Build/iOS/MaterialKit.framework; sourceTree = "<group>"; };
 		770D69A81C1799AD0060FC0A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		770D69A91C1799AD0060FC0A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		775F02131C204BD0009764C3 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		775F02151C2053AA009764C3 /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		775F02171C20613C009764C3 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		775F021C1C20DFD5009764C3 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		775F02201C21AE5E009764C3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		77CDCDDA1C0DC83900E496BD /* GoPack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +102,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		775F02191C206466009764C3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */,
+				775F02171C20613C009764C3 /* CategoryDetailViewController.swift */,
+				77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */,
+				775F02151C2053AA009764C3 /* CategoryListViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		775F021A1C206487009764C3 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */,
+				775F021C1C20DFD5009764C3 /* CategoryCell.swift */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+		775F021B1C20649F009764C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77CDCE0E1C0FC51400E496BD /* Item.swift */,
+				775F02131C204BD0009764C3 /* Category.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		77B1D7921C1DBA930037854E /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,15 +166,15 @@
 		77CDCDDC1C0DC83900E496BD /* GoPack */ = {
 			isa = PBXGroup;
 			children = (
-				77CDCE0E1C0FC51400E496BD /* Item.swift */,
+				775F021B1C20649F009764C3 /* Model */,
 				77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */,
-				77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */,
-				77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */,
-				77CDCE101C0FCBF200E496BD /* ChecklistItemCell.swift */,
+				775F02191C206466009764C3 /* ViewControllers */,
+				775F021A1C206487009764C3 /* TableCells */,
 				77CDCDE11C0DC83900E496BD /* Main.storyboard */,
 				77CDCDE71C0DC83900E496BD /* Assets.xcassets */,
 				77CDCDE91C0DC83900E496BD /* LaunchScreen.storyboard */,
 				77CDCDEC1C0DC83900E496BD /* Info.plist */,
+				775F02201C21AE5E009764C3 /* Constants.swift */,
 			);
 			path = GoPack;
 			sourceTree = "<group>";
@@ -314,10 +353,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B1D7911C1D5B650037854E /* ItemDetailViewController.swift in Sources */,
+				775F02181C20613C009764C3 /* CategoryDetailViewController.swift in Sources */,
+				775F02161C2053AA009764C3 /* CategoryListViewController.swift in Sources */,
 				77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */,
 				77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */,
+				775F02211C21AE5E009764C3 /* Constants.swift in Sources */,
+				775F021D1C20DFD5009764C3 /* CategoryCell.swift in Sources */,
 				77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */,
 				77CDCE0F1C0FC51400E496BD /* Item.swift in Sources */,
+				775F02141C204BD0009764C3 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

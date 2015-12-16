@@ -11,9 +11,10 @@ import RealmSwift
 
 class Item: Object {
     dynamic var title = ""
-    dynamic var note: String?
+    dynamic var note: String? = ""
     dynamic var completed = false
     dynamic var hidden = false
+    dynamic var category: Category?
     
     convenience init(title: String, note: String? = nil) {
         self.init()

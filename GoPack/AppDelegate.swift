@@ -9,12 +9,24 @@
 import UIKit
 import RealmSwift
 
+var realm: Realm!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    let config = Realm.Configuration(
+        schemaVersion: 3,
+        migrationBlock: { migration, oldSchemaVersion in
+        }
+    )
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // Tell Realm to use this new configuration object for the default Realm
+        Realm.Configuration.defaultConfiguration = config
+        realm = try! Realm()
         return true
     }
 

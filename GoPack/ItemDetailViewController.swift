@@ -14,28 +14,38 @@ class ItemDetailViewController: UITableViewController {
     @IBOutlet weak var itemTitleTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var categoryNameLabel: UILabel!
     
     var completed = false
     
-    let realm = try! Realm()
-    
     var item: Item?
-    var numberOfSection = 3
+    var selectedCategory: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let item = item {
             self.title = ""
             itemTitleTextField.text = item.title
             saveButton.enabled = true
             completed = item.completed
+            selectedCategory = item.category
         } else {
             itemTitleTextField.becomeFirstResponder()
-            numberOfSection = 2
         }
-        setCheckButtonImage()
         
+        setCheckButtonImage()
+        setCategoryTitle()
+    }
+    
+    func setCategoryTitle() {
+        if let selectedCategory = selectedCategory {
+            categoryNameLabel.text = selectedCategory.title
+            categoryNameLabel.textColor = UIColor.textColor()
+        } else {
+            categoryNameLabel.text = "No Category"
+            categoryNameLabel.textColor = UIColor.disabledTextColor()
+        }
     }
     
     func setCheckButtonImage() {
@@ -46,8 +56,15 @@ class ItemDetailViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (section == 0) {
+            return CGFloat.min;
+        }
+        return 10;
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
     }
     
     override func tableView(_tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -58,6 +75,10 @@ class ItemDetailViewController: UITableViewController {
             cell.layoutMargins = UIEdgeInsetsZero
         }
     }
+    
+    @IBAction func onCancelClicked(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     @IBAction func onSaveClicked(sender: AnyObject) {
         let title = itemTitleTextField.text ?? ""
@@ -65,10 +86,12 @@ class ItemDetailViewController: UITableViewController {
             if let item = self.item {
                 item.title = title
                 item.completed = self.completed
+                item.category = self.selectedCategory
             } else {
                 let newItem = Item(title: title)
                 newItem.completed = self.completed
-                self.realm.add(newItem)
+                newItem.category = self.selectedCategory
+                realm.add(newItem)
             }
         }
         dismissViewControllerAnimated(true, completion: nil)
@@ -93,7 +116,7 @@ class ItemDetailViewController: UITableViewController {
         } else if (indexPath.section == 2 && indexPath.row == 0) {
             try! realm.write() {
                 if let item = self.item {
-                    self.realm.delete(item)
+                    realm.delete(item)
                 }
             }
             dismissViewControllerAnimated(true, completion: nil)
@@ -101,6 +124,22 @@ class ItemDetailViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return numberOfSection
+        return item == nil ? 2 : 3
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ChooseCategory" {
+            if let dc = segue.destinationViewController as? CategoryListViewController {
+                dc.pageType = .ChooseCategory
+                dc.delegate = self
+            }
+        }
+    }
+}
+
+extension ItemDetailViewController: CategoryListDelegate {
+    func didChooseCategory(category: Category?) {
+        selectedCategory = category
+        setCategoryTitle()
     }
 }

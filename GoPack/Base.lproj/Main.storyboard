@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--Checklist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ChecklistViewController" customModule="GoPack" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5S5-R8-U1h">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5S5-R8-U1h">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
@@ -115,7 +115,12 @@
                             <constraint firstItem="5S5-R8-U1h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fwH-Pa-6qG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="r9q-q4-gpZ">
+                    <navigationItem key="navigationItem" title="Checklist" id="r9q-q4-gpZ">
+                        <barButtonItem key="leftBarButtonItem" title="Categories" id="guc-yK-ezw">
+                            <connections>
+                                <segue destination="a4q-Vd-7bD" kind="show" identifier="ManageCategories" id="A5c-sZ-GuO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reset" id="SuK-Wj-i0F">
                             <connections>
                                 <action selector="resetButtonClicked:" destination="BYZ-38-t0r" id="Mzr-CJ-QaW"/>
@@ -130,6 +135,159 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="374"/>
+        </scene>
+        <!--Category List View Controller-->
+        <scene sceneID="dU5-6X-hUv">
+            <objects>
+                <tableViewController id="a4q-Vd-7bD" customClass="CategoryListViewController" customModule="GoPack" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="51" sectionHeaderHeight="18" sectionFooterHeight="18" id="efH-ic-IeI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="gYS-oh-seJ" customClass="CategoryCell" customModule="GoPack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYS-oh-seJ" id="k1f-Et-xv4">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="50.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-Xa-Nv4">
+                                            <rect key="frame" x="16" y="14" width="551" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Category Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsI-Jg-6KQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="535" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-Bq-t27">
+                                                    <rect key="frame" x="535" y="1.5" width="16" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6rg-Xa-Nv4" firstAttribute="centerY" secondItem="k1f-Et-xv4" secondAttribute="centerY" id="MXU-Of-Cm8"/>
+                                        <constraint firstItem="6rg-Xa-Nv4" firstAttribute="leading" secondItem="k1f-Et-xv4" secondAttribute="leading" constant="16" id="rxD-gw-FHY"/>
+                                        <constraint firstAttribute="trailing" secondItem="6rg-Xa-Nv4" secondAttribute="trailing" id="ulo-K0-CHG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="numberOfItemsCell" destination="V3f-Bq-t27" id="bhN-NJ-mBB"/>
+                                    <outlet property="titleLabel" destination="nsI-Jg-6KQ" id="Voi-Fb-7Vv"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCategoryCell" id="rng-sP-F4u">
+                                <rect key="frame" x="0.0" y="164.5" width="600" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rng-sP-F4u" id="Kal-1k-5XR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-r0-ZDE">
+                                            <rect key="frame" x="16" y="13.5" width="568" height="24"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-Bt-brO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="New Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-8t-uHK">
+                                                    <rect key="frame" x="40" y="1" width="528" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="2ea-r0-ZDE" secondAttribute="trailing" constant="16" id="2Hb-f0-KjO"/>
+                                        <constraint firstItem="2ea-r0-ZDE" firstAttribute="centerY" secondItem="Kal-1k-5XR" secondAttribute="centerY" id="AeO-06-Obh"/>
+                                        <constraint firstItem="2ea-r0-ZDE" firstAttribute="leading" secondItem="Kal-1k-5XR" secondAttribute="leading" constant="16" id="Pzt-vW-Wo2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="a4q-Vd-7bD" id="A5K-qq-sQV"/>
+                            <outlet property="delegate" destination="a4q-Vd-7bD" id="8Hs-ha-Nis"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="eGU-Ui-eLS" kind="presentation" identifier="ShowCategoryDetail" id="Ok9-nP-qw3"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ws-tW-pz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="1181"/>
+        </scene>
+        <!--New Category-->
+        <scene sceneID="k8d-FR-dN7">
+            <objects>
+                <tableViewController id="sDa-2W-ZOL" customClass="CategoryDetailViewController" customModule="GoPack" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Oph-Gf-HEx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection id="xTv-MN-QaQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="8k3-7C-11l">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="81"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8k3-7C-11l" id="C46-tc-HpT">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96t-u4-VB4">
+                                                    <rect key="frame" x="16" y="30" width="568" height="22"/>
+                                                    <color key="textColor" white="0.0" alpha="0.87" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="titleTextFieldChanged:" destination="sDa-2W-ZOL" eventType="editingChanged" id="zel-nZ-N3k"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="96t-u4-VB4" firstAttribute="leading" secondItem="C46-tc-HpT" secondAttribute="leading" constant="16" id="SdQ-4t-4Tm"/>
+                                                <constraint firstItem="96t-u4-VB4" firstAttribute="centerY" secondItem="C46-tc-HpT" secondAttribute="centerY" id="o8L-DZ-aZz"/>
+                                                <constraint firstAttribute="trailing" secondItem="96t-u4-VB4" secondAttribute="trailing" constant="16" id="yfH-hR-QUB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="sDa-2W-ZOL" id="Igi-Cb-mip"/>
+                            <outlet property="delegate" destination="sDa-2W-ZOL" id="uHd-3q-2cq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Category" id="uRM-3g-pxR">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WGh-qR-kWt">
+                            <connections>
+                                <action selector="onCancelClicked:" destination="sDa-2W-ZOL" id="F5l-C5-uFG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zfF-F3-POQ">
+                            <connections>
+                                <action selector="onSaveClicked:" destination="sDa-2W-ZOL" id="pEE-3K-lHI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="zfF-F3-POQ" id="iGd-tO-pmf"/>
+                        <outlet property="titleTextField" destination="96t-u4-VB4" id="udn-as-SQK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVz-W7-wvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589" y="1181"/>
         </scene>
         <!--Add New-->
         <scene sceneID="gxg-6p-jzK">
@@ -163,8 +321,9 @@
                                                                 <action selector="onCheckButtonClicked:" destination="Q7W-9s-Bx6" eventType="touchUpInside" id="eqf-Lg-6IF"/>
                                                             </connections>
                                                         </button>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-4C-hCZ">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-4C-hCZ">
                                                             <rect key="frame" x="56" y="9" width="512" height="22"/>
+                                                            <color key="textColor" white="0.0" alpha="0.87" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <connections>
@@ -191,6 +350,27 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E0D-wA-NRa" id="Gtp-5h-2f4">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xrb-Rz-Fph">
+                                                    <rect key="frame" x="16" y="10" width="568" height="24"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="Iky-go-EXv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wip-Hu-6Yh">
+                                                            <rect key="frame" x="40" y="1" width="528" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xrb-Rz-Fph" firstAttribute="leading" secondItem="Gtp-5h-2f4" secondAttribute="leading" constant="16" id="cCJ-dJ-jKs"/>
+                                                <constraint firstItem="Xrb-Rz-Fph" firstAttribute="centerY" secondItem="Gtp-5h-2f4" secondAttribute="centerY" id="q0W-53-8Qz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xrb-Rz-Fph" secondAttribute="trailing" constant="16" id="yTp-Qk-3I9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mBg-2R-4X7">
@@ -199,7 +379,31 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mBg-2R-4X7" id="2aF-vQ-UYC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fVc-IZ-aSY">
+                                                    <rect key="frame" x="16" y="10" width="568" height="24"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="categories" translatesAutoresizingMaskIntoConstraints="NO" id="86g-ZQ-6ME">
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFi-cY-F9N">
+                                                            <rect key="frame" x="40" y="1" width="528" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fVc-IZ-aSY" firstAttribute="centerY" secondItem="2aF-vQ-UYC" secondAttribute="centerY" id="4cH-s5-shV"/>
+                                                <constraint firstItem="fVc-IZ-aSY" firstAttribute="leading" secondItem="2aF-vQ-UYC" secondAttribute="leading" constant="16" id="QcQ-zA-OXg"/>
+                                                <constraint firstAttribute="trailing" secondItem="fVc-IZ-aSY" secondAttribute="trailing" constant="16" id="XaK-y4-M1k"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="a4q-Vd-7bD" kind="show" identifier="ChooseCategory" id="5Gg-sT-cSu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -213,13 +417,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mmJ-cJ-dHM">
-                                                    <rect key="frame" x="16" y="11" width="568" height="22"/>
+                                                    <rect key="frame" x="16" y="10" width="568" height="24"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash" translatesAutoresizingMaskIntoConstraints="NO" id="OAS-22-4rw">
-                                                            <rect key="frame" x="0.0" y="2" width="14" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Delete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTp-Ka-ReE">
-                                                            <rect key="frame" x="30" y="0.0" width="538" height="22"/>
+                                                            <rect key="frame" x="40" y="1" width="528" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -245,7 +449,7 @@
                     <navigationItem key="navigationItem" title="Add New" id="XGC-Nl-19v">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dYK-1Z-T7e">
                             <connections>
-                                <segue destination="hSi-n8-61C" kind="unwind" unwindAction="prepareForUnwind:" id="MRe-RK-TPt"/>
+                                <action selector="onCancelClicked:" destination="Q7W-9s-Bx6" id="ePG-8j-nIp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="H1y-Ip-1gJ">
@@ -255,13 +459,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryNameLabel" destination="YFi-cY-F9N" id="8GD-VW-0NV"/>
                         <outlet property="checkButton" destination="cQL-Ph-8C9" id="6vN-Nr-LPi"/>
                         <outlet property="itemTitleTextField" destination="cC2-4C-hCZ" id="c4d-ab-Lrh"/>
                         <outlet property="saveButton" destination="H1y-Ip-1gJ" id="fAl-Af-4Zd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMu-mq-y41" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hSi-n8-61C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2589" y="374"/>
         </scene>
@@ -301,11 +505,35 @@
             </objects>
             <point key="canvasLocation" x="1858" y="374"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6ww-mQ-SaF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eGU-Ui-eLS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5iJ-xQ-7gk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sDa-2W-ZOL" kind="relationship" relationship="rootViewController" id="Rv3-IE-Wzr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jid-q3-Gj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1865" y="1181"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="add" width="24" height="24"/>
+        <image name="categories" width="24" height="24"/>
         <image name="hidden" width="22" height="19"/>
+        <image name="note" width="24" height="24"/>
         <image name="plus white" width="22" height="22"/>
-        <image name="trash" width="14" height="18"/>
+        <image name="trash" width="24" height="24"/>
         <image name="unchecked" width="40" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Gg-sT-cSu"/>
+    </inferredMetricsTieBreakers>
 </document>

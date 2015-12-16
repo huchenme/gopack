@@ -15,23 +15,20 @@ class ChecklistViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: FabButton!
     
-    let realm = try! Realm()
-    lazy var items: Results<Item> = { self.realm.objects(Item) }()
+    lazy var items: Results<Item> = { realm.objects(Item) }()
     
     //FIXME: Remove me in production
     func populateDefaultItems() {
         if items.count == 0 {
             try! realm.write() {
-                self.realm.add(Item(title: "test title"))
+                realm.add(Item(title: "test title"))
                 var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
                 item.hidden = true
-                self.realm.add(item)
+                realm.add(item)
                 item = Item(title: "Battery")
                 item.completed = true
-                self.realm.add(item)
+                realm.add(item)
             }
-            
-            items = realm.objects(Item)
         }
     }
     
@@ -50,9 +47,6 @@ class ChecklistViewController: UIViewController {
         items = realm.objects(Item)
         tableView.reloadData()
     }
-
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-    }
     
     @IBAction func addButtonClicked(sender: AnyObject) {
         performSegueWithIdentifier("ShowItemDetail", sender: nil)
@@ -61,7 +55,7 @@ class ChecklistViewController: UIViewController {
     @IBAction func resetButtonClicked(sender: AnyObject) {
         let alert = UIAlertController(title: "Are you sure?", message: "We will reset everthing for you", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-            try! self.realm.write() {
+            try! realm.write() {
                 for item in self.items {
                     item.completed = false
                     item.hidden = false
@@ -75,9 +69,6 @@ class ChecklistViewController: UIViewController {
 }
 
 extension ChecklistViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 81
-    }
     
     func tableView(_tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
             
@@ -99,6 +90,8 @@ extension ChecklistViewController: UITableViewDelegate {
                 let item = items[indexPath.row]
                 dc.item = item
             }
+        } else if segue.identifier == "ManageCategories", let dc = segue.destinationViewController as? CategoryListViewController {
+            dc.pageType = .ManageCategories
         }
     }
 }
