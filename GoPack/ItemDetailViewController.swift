@@ -35,6 +35,10 @@ class ItemDetailViewController: UITableViewController {
         }
         
         setCheckButtonImage()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         setCategoryTitle()
     }
     
@@ -136,11 +140,18 @@ class ItemDetailViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func unwindFromCategoryDetail(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindFromCategoryDetail" {
+            if let vc = segue.sourceViewController as? CategoryDetailViewController {
+                selectedCategory = vc.category
+            }
+        }
+    }
 }
 
 extension ItemDetailViewController: CategoryListDelegate {
     func didChooseCategory(category: Category?) {
         selectedCategory = category
-        setCategoryTitle()
     }
 }

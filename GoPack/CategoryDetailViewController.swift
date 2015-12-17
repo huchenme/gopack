@@ -37,10 +37,12 @@ class CategoryDetailViewController: UITableViewController {
             if let category = self.category {
                 category.title = title
             } else {
-                realm.add(Category(title: title))
+                let newCategory = Category(title: title)
+                realm.add(newCategory)
+                self.category = newCategory
             }
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("unwindFromCategoryDetail", sender: self)
     }
     
     @IBAction func titleTextFieldChanged(sender: UITextField) {

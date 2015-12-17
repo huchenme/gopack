@@ -149,6 +149,21 @@ class CategoryListViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func unwindFromCategoryDetail(segue: UIStoryboardSegue) {
+    }
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        if action == "unwindFromCategoryDetail:" {
+            switch pageType {
+            case .ManageCategories:
+                return true
+            case .ChooseCategory:
+                return false
+            }
+        }
+        return super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+    }
 }
 
 protocol CategoryListDelegate {
