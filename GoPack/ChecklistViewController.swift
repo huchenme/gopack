@@ -9,10 +9,10 @@
 import UIKit
 import RealmSwift
 import MaterialKit
+import PagingMenuController
 
-class ChecklistViewController: UIViewController {
+class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: FabButton!
     
     lazy var items: Results<Item> = { realm.objects(Item) }()
@@ -35,17 +35,27 @@ class ChecklistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         populateDefaultItems()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
-        reloadData()
-    }
-    
-    func reloadData() {
-        items = realm.objects(Item)
-        tableView.reloadData()
+        let controller1 = self.storyboard?.instantiateViewControllerWithIdentifier("ChecklistTableViewController") as! ChecklistTableViewController
+        controller1.title = "ACTIVE"
+        controller1.items = items
+        
+        let controller2 = self.storyboard?.instantiateViewControllerWithIdentifier("ChecklistTableViewController") as! ChecklistTableViewController
+        controller2.title = "COMPLETED"
+        controller2.items = items
+        
+        let viewControllers = [controller1, controller2]
+        
+        let options = PagingMenuOptions()
+        options.menuHeight = 50
+        options.selectedBackgroundColor = UIColor(white: 0, alpha: 0.5)
+        options.menuDisplayMode = .SegmentedControl
+        options.scrollEnabled = false
+        options.menuItemMode = .Underline(height: 2, color: UIColor.redColor(), horizontalPadding: 10, verticalPadding: 10)
+        
+        let pagingMenuController = self.childViewControllers.first as! PagingMenuController
+        pagingMenuController.delegate = self
+        pagingMenuController.setup(viewControllers: viewControllers, options: options)
     }
     
     @IBAction func addButtonClicked(sender: AnyObject) {
@@ -61,66 +71,18 @@ class ChecklistViewController: UIViewController {
                     item.hidden = false
                 }
             }
-            self.tableView.reloadData()
+            //FIXME: fix this and move to first view
+//            self.tableView.reloadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-}
-
-extension ChecklistViewController: UITableViewDelegate {
     
-    func tableView(_tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-            
-        if cell.respondsToSelector("setSeparatorInset:") {
-            cell.separatorInset = UIEdgeInsetsZero
-        }
-        if cell.respondsToSelector("setLayoutMargins:") {
-            cell.layoutMargins = UIEdgeInsetsZero
-        }
+    func willMoveToMenuPage(page: Int) {
+        print("will move to page")
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowItemDetail", let nav = segue.destinationViewController as? UINavigationController, let dc = nav.topViewController as? ItemDetailViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
-                let item = items[indexPath.row]
-                dc.item = item
-            }
-        } else if segue.identifier == "ManageCategories", let dc = segue.destinationViewController as? CategoryListViewController {
-            dc.pageType = .ManageCategories
-        }
-    }
-}
-
-extension ChecklistViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
-        if let checklistItemCell = cell as? ChecklistItemCell {
-            checklistItemCell.item = items[indexPath.row]
-            checklistItemCell.delegate = self
-            checklistItemCell.indexPath = indexPath
-        }
-        
-        return cell
-    }
-}
-
-
-extension ChecklistViewController: ChecklistItemCellDelegate {
-    func onCheckButtonClickedAtIndex(indexPath: NSIndexPath) {
-        try! realm.write() {
-            let item = self.items[indexPath.row]
-            item.completed = !item.completed
-        }
-        tableView.reloadData()
+    func didMoveToMenuPage(page: Int) {
+        print("did move to page")
     }
 }

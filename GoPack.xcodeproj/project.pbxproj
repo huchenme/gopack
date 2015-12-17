@@ -16,6 +16,8 @@
 		775F02181C20613C009764C3 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02171C20613C009764C3 /* CategoryDetailViewController.swift */; };
 		775F021D1C20DFD5009764C3 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F021C1C20DFD5009764C3 /* CategoryCell.swift */; };
 		775F02211C21AE5E009764C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02201C21AE5E009764C3 /* Constants.swift */; };
+		775F02281C2303A6009764C3 /* PagingMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775F02271C2303A6009764C3 /* PagingMenuController.framework */; };
+		775F022A1C2304F5009764C3 /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F02291C2304F5009764C3 /* ChecklistTableViewController.swift */; };
 		77B1D7911C1D5B650037854E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */; };
 		77CDCDDE1C0DC83900E496BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */; };
 		77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */; };
@@ -55,6 +57,8 @@
 		775F02171C20613C009764C3 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		775F021C1C20DFD5009764C3 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		775F02201C21AE5E009764C3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		775F02271C2303A6009764C3 /* PagingMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PagingMenuController.framework; path = Carthage/Build/iOS/PagingMenuController.framework; sourceTree = "<group>"; };
+		775F02291C2304F5009764C3 /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 		77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		77CDCDDA1C0DC83900E496BD /* GoPack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoPack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDCDDD1C0DC83900E496BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775F02281C2303A6009764C3 /* PagingMenuController.framework in Frameworks */,
 				770D69A51C178DD80060FC0A /* Format.framework in Frameworks */,
 				770D69A61C178DD80060FC0A /* MaterialKit.framework in Frameworks */,
 				770D69AA1C1799AD0060FC0A /* Realm.framework in Frameworks */,
@@ -108,6 +113,7 @@
 				77B1D7901C1D5B650037854E /* ItemDetailViewController.swift */,
 				775F02171C20613C009764C3 /* CategoryDetailViewController.swift */,
 				77CDCDDF1C0DC83900E496BD /* ChecklistViewController.swift */,
+				775F02291C2304F5009764C3 /* ChecklistTableViewController.swift */,
 				775F02151C2053AA009764C3 /* CategoryListViewController.swift */,
 			);
 			name = ViewControllers;
@@ -134,6 +140,7 @@
 		77B1D7921C1DBA930037854E /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				775F02271C2303A6009764C3 /* PagingMenuController.framework */,
 				770D69A81C1799AD0060FC0A /* Realm.framework */,
 				770D69A91C1799AD0060FC0A /* RealmSwift.framework */,
 				770D69A31C178DD80060FC0A /* Format.framework */,
@@ -338,6 +345,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/MaterialKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PagingMenuController.framework",
 			);
 			outputPaths = (
 			);
@@ -356,6 +364,7 @@
 				775F02181C20613C009764C3 /* CategoryDetailViewController.swift in Sources */,
 				775F02161C2053AA009764C3 /* CategoryListViewController.swift in Sources */,
 				77CDCE111C0FCBF200E496BD /* ChecklistItemCell.swift in Sources */,
+				775F022A1C2304F5009764C3 /* ChecklistTableViewController.swift in Sources */,
 				77CDCDE01C0DC83900E496BD /* ChecklistViewController.swift in Sources */,
 				775F02211C21AE5E009764C3 /* Constants.swift in Sources */,
 				775F021D1C20DFD5009764C3 /* CategoryCell.swift in Sources */,

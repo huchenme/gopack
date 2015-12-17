@@ -1,3 +1,4 @@
 github "marmelroy/Format"
 github "CosmicMind/MaterialKit"
 github "realm/realm-cocoa"
+github "kitasuke/PagingMenuController"
