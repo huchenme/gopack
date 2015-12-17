@@ -48,7 +48,6 @@ class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
         
         let options = PagingMenuOptions()
         options.menuHeight = 50
-        options.selectedBackgroundColor = UIColor(white: 0, alpha: 0.5)
         options.menuDisplayMode = .SegmentedControl
         options.scrollEnabled = false
         options.menuItemMode = .Underline(height: 2, color: UIColor.redColor(), horizontalPadding: 10, verticalPadding: 10)
