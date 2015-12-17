@@ -145,24 +145,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="gYS-oh-seJ" customClass="CategoryCell" customModule="GoPack" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="gYS-oh-seJ" customClass="CategoryCell" customModule="GoPack" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYS-oh-seJ" id="k1f-Et-xv4">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="50.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-Xa-Nv4">
-                                            <rect key="frame" x="16" y="14" width="551" height="22"/>
+                                            <rect key="frame" x="16" y="14" width="568" height="22"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Category Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsI-Jg-6KQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="535" height="22"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="552" height="22"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-Bq-t27">
-                                                    <rect key="frame" x="535" y="1.5" width="16" height="19.5"/>
+                                                    <rect key="frame" x="552" y="1.5" width="16" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                     <constraints>
                                         <constraint firstItem="6rg-Xa-Nv4" firstAttribute="centerY" secondItem="k1f-Et-xv4" secondAttribute="centerY" id="MXU-Of-Cm8"/>
                                         <constraint firstItem="6rg-Xa-Nv4" firstAttribute="leading" secondItem="k1f-Et-xv4" secondAttribute="leading" constant="16" id="rxD-gw-FHY"/>
-                                        <constraint firstAttribute="trailing" secondItem="6rg-Xa-Nv4" secondAttribute="trailing" id="ulo-K0-CHG"/>
+                                        <constraint firstAttribute="trailing" secondItem="6rg-Xa-Nv4" secondAttribute="trailing" constant="16" id="ulo-K0-CHG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -276,7 +276,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="zfF-F3-POQ">
                             <connections>
-                                <action selector="onSaveClicked:" destination="sDa-2W-ZOL" id="pEE-3K-lHI"/>
+                                <action selector="onSaveClicked:" destination="sDa-2W-ZOL" id="pEc-aH-mNT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

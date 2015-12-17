@@ -21,6 +21,7 @@ class CategoryListViewController: UITableViewController {
     var pageType = CategoryListViewPageType.ManageCategories
     
     var delegate: CategoryListDelegate?
+    var selectedCategory: Category?
     
     //FIXME: Remove me in production
     func populateDefaultCategories() {
@@ -80,12 +81,17 @@ class CategoryListViewController: UITableViewController {
                 case .ManageCategories:
                     categoryCell.category = categories[indexPath.row]
                 case .ChooseCategory:
-                    categoryCell.accessoryType = .None
                     categoryCell.hideNumber = true
                     if indexPath.row == 0 {
                         categoryCell.category = nil
+                        if selectedCategory == nil {
+                            categoryCell.accessoryType = .Checkmark
+                        }
                     } else {
                         categoryCell.category = categories[indexPath.row - 1]
+                        if selectedCategory == categories[indexPath.row - 1] {
+                            categoryCell.accessoryType = .Checkmark
+                        }
                     }
                 }
             }

@@ -132,6 +132,7 @@ class ItemDetailViewController: UITableViewController {
             if let dc = segue.destinationViewController as? CategoryListViewController {
                 dc.pageType = .ChooseCategory
                 dc.delegate = self
+                dc.selectedCategory = selectedCategory
             }
         }
     }
