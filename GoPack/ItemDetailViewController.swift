@@ -12,6 +12,7 @@ import RealmSwift
 class ItemDetailViewController: UITableViewController {
 
     @IBOutlet weak var itemTitleTextField: UITextField!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var categoryNameLabel: UILabel!
@@ -28,6 +29,8 @@ class ItemDetailViewController: UITableViewController {
             self.title = ""
             itemTitleTextField.text = item.title
             saveButton.enabled = true
+            cancelButton.enabled = false
+            cancelButton.tintColor = UIColor.clearColor()
             completed = item.completed
             selectedCategory = item.category
         } else {

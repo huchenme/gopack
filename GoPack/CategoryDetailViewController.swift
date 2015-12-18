@@ -37,7 +37,9 @@ class CategoryDetailViewController: UITableViewController {
             if let category = self.category {
                 category.title = title
             } else {
-                let newCategory = Category(title: title)
+                let categories = realm.objects(Category)
+                let maxOrder: Int = categories.max("order")!
+                let newCategory = Category(value: ["title" : title, "order": maxOrder + 1])
                 realm.add(newCategory)
                 self.category = newCategory
             }

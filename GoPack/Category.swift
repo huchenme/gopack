@@ -9,8 +9,11 @@
 import Foundation
 import RealmSwift
 
-class Category: Object {
+class Category: Object, Equatable {
+    dynamic var id = NSUUID().UUIDString
     dynamic var title = ""
+    dynamic var order = -1
+    
     var items: [Item] {
         return linkingObjects(Item.self, forProperty: "category")
     }
@@ -19,4 +22,12 @@ class Category: Object {
         self.init()
         self.title = title
     }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+func ==(lhs: Category, rhs: Category) -> Bool {
+    return lhs.id == rhs.id
 }

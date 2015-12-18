@@ -23,17 +23,6 @@ class CategoryListViewController: UITableViewController {
     var delegate: CategoryListDelegate?
     var selectedCategory: Category?
     
-    //FIXME: Remove me in production
-    func populateDefaultCategories() {
-        if categories.count == 0 {
-            try! realm.write() {
-                realm.add(Category(title: "category A"))
-                realm.add(Category(title: "category B"))
-                realm.add(Category(title: "category C"))
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +33,6 @@ class CategoryListViewController: UITableViewController {
         case .ChooseCategory:
             title = "Choose Category"
         }
-        
-        populateDefaultCategories()
     }
     
     override func viewWillAppear(animated: Bool) {

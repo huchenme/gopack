@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tok-01-apa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="-321"/>
+            <point key="canvasLocation" x="1117" y="-375"/>
         </scene>
         <!--Checklist-->
         <scene sceneID="tne-QT-ifu">
@@ -136,7 +136,6 @@
                                 <state key="normal" image="plus white"/>
                                 <state key="highlighted" image="plus white"/>
                                 <connections>
-                                    <action selector="addButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WHP-CQ-gDn"/>
                                     <segue destination="xqE-Do-aG7" kind="presentation" identifier="ShowItemDetail" id="76z-6l-2qN"/>
                                 </connections>
                             </button>
@@ -496,6 +495,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="dYK-1Z-T7e" id="gHb-gs-vAk"/>
                         <outlet property="categoryNameLabel" destination="YFi-cY-F9N" id="8GD-VW-0NV"/>
                         <outlet property="checkButton" destination="cQL-Ph-8C9" id="6vN-Nr-LPi"/>
                         <outlet property="itemTitleTextField" destination="cC2-4C-hCZ" id="c4d-ab-Lrh"/>
@@ -576,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQM-mf-T9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1858" y="-289"/>
+            <point key="canvasLocation" x="305" y="1149"/>
         </scene>
     </scenes>
     <resources>
@@ -589,7 +589,7 @@
         <image name="unchecked" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="76z-6l-2qN"/>
         <segue reference="A5c-sZ-GuO"/>
-        <segue reference="J2T-SX-44L"/>
     </inferredMetricsTieBreakers>
 </document>

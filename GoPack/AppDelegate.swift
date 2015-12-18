@@ -17,8 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let config = Realm.Configuration(
-        schemaVersion: 3,
+        schemaVersion: 5,
         migrationBlock: { migration, oldSchemaVersion in
+            if oldSchemaVersion < 4 {
+                migration.enumerate(Category.className()) { oldObject, newObject in
+                    newObject!["id"] = NSUUID().UUIDString
+                }
+                migration.enumerate(Item.className()) { oldObject, newObject in
+                    newObject!["id"] = NSUUID().UUIDString
+                }
+            }
+            if oldSchemaVersion < 5 {
+                var categoryOrder = 0
+                migration.enumerate(Category.className()) { oldObject, newObject in
+                    newObject!["order"] = categoryOrder
+                    categoryOrder++
+                }
+            }
         }
     )
     

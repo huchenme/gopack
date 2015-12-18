@@ -19,22 +19,26 @@ class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
     
     //FIXME: Remove me in production
     func populateDefaultItems() {
-        if items.count == 0 {
-            try! realm.write() {
-                realm.add(Item(title: "test title"))
-                var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
-                item.hidden = true
-                realm.add(item)
-                item = Item(title: "Battery")
-                item.completed = true
-                realm.add(item)
-            }
+        try! realm.write() {
+            realm.deleteAll()
+            
+            realm.add(Item(title: "test title"))
+            var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
+            item.hidden = true
+            realm.add(item)
+            item = Item(title: "Battery")
+            item.completed = true
+            realm.add(item)
+            
+            realm.add(Category(value: ["title" : "category A", "order": 0]))
+            realm.add(Category(value: ["title" : "category B", "order": 1]))
+            realm.add(Category(value: ["title" : "category C", "order": 2]))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateDefaultItems()
+//        populateDefaultItems()
         
         let controller1 = self.storyboard?.instantiateViewControllerWithIdentifier("ChecklistTableViewController") as! ChecklistTableViewController
         controller1.title = "ACTIVE"
@@ -55,10 +59,6 @@ class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
         let pagingMenuController = self.childViewControllers.first as! PagingMenuController
         pagingMenuController.delegate = self
         pagingMenuController.setup(viewControllers: viewControllers, options: options)
-    }
-    
-    @IBAction func addButtonClicked(sender: AnyObject) {
-        performSegueWithIdentifier("ShowItemDetail", sender: nil)
     }
     
     @IBAction func resetButtonClicked(sender: AnyObject) {
