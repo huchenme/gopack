@@ -15,38 +15,14 @@ class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
 
     @IBOutlet weak var addButton: FabButton!
     
-    lazy var items: Results<Item> = { realm.objects(Item) }()
-    
-    //FIXME: Remove me in production
-    func populateDefaultItems() {
-        try! realm.write() {
-            realm.deleteAll()
-            
-            realm.add(Item(title: "test title"))
-            var item = Item(title: "test long long title with some long text and it should be long", note: "test long long title with some long text and it should be long")
-            item.hidden = true
-            realm.add(item)
-            item = Item(title: "Battery")
-            item.completed = true
-            realm.add(item)
-            
-            realm.add(Category(value: ["title" : "category A", "order": 0]))
-            realm.add(Category(value: ["title" : "category B", "order": 1]))
-            realm.add(Category(value: ["title" : "category C", "order": 2]))
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        populateDefaultItems()
         
         let controller1 = self.storyboard?.instantiateViewControllerWithIdentifier("ChecklistTableViewController") as! ChecklistTableViewController
-        controller1.title = "ACTIVE"
-        controller1.items = items
+        controller1.checklistDisplayingType = .Active
         
         let controller2 = self.storyboard?.instantiateViewControllerWithIdentifier("ChecklistTableViewController") as! ChecklistTableViewController
-        controller2.title = "COMPLETED"
-        controller2.items = items
+        controller2.checklistDisplayingType = .Completed
         
         let viewControllers = [controller1, controller2]
         
@@ -65,7 +41,8 @@ class ChecklistViewController: UIViewController, PagingMenuControllerDelegate {
         let alert = UIAlertController(title: "Are you sure?", message: "We will reset everthing for you", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
             try! realm.write() {
-                for item in self.items {
+                let items = realm.objects(Item)
+                for item in items {
                     item.completed = false
                     item.hidden = false
                 }

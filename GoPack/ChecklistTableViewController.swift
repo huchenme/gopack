@@ -9,31 +9,58 @@
 import UIKit
 import RealmSwift
 
+enum ChecklistDisplayingType {
+    case Active
+    case Completed
+    case Hidden
+    case All
+}
+
 class ChecklistTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var items: Results<Item>! {
-        didSet {
-            categories = [Category]()
-            itemsWithoutCategory = [Item]()
-            for item in items {
-                if let category = item.category where !categories.contains(category) {
-                    categories.append(category)
-                } else if (item.category == nil ) {
-                    itemsWithoutCategory.append(item)
-                }
-            }
-            
-            categories = categories.sort { $0.order < $1.order }
-        }
-    }
-    
+    var checklistDisplayingType: ChecklistDisplayingType = .All
+    var items: Results<Item>!
     var categories = [Category]()
     var itemsWithoutCategory = [Item]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        switch checklistDisplayingType {
+        case .Active:
+            title = "ACTIVE"
+        case .Completed:
+            title = "COMPLETED"
+        case .Hidden:
+            title = "HIDDEN"
+        case .All:
+            title = "ALL"
+        }
+    }
+    
+    func loadData() {
+        switch checklistDisplayingType {
+        case .Active:
+            items = realm.objects(Item).filter("completed = %@ && hidden = %@", false, false)
+        case .Completed:
+            items = realm.objects(Item).filter("completed = %@ && hidden = %@", true, false)
+        case .Hidden:
+            items = realm.objects(Item).filter("hidden = %@", true)
+        case .All:
+            items = realm.objects(Item)
+        }
+        categories = [Category]()
+        itemsWithoutCategory = [Item]()
+        for item in items {
+            if let category = item.category where !categories.contains(category) {
+                categories.append(category)
+            } else if (item.category == nil ) {
+                itemsWithoutCategory.append(item)
+            }
+        }
+        
+        categories = categories.sort { $0.order < $1.order }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,8 +69,7 @@ class ChecklistTableViewController: UIViewController {
     }
     
     func reloadData() {
-        //FIXME: filter
-        items = realm.objects(Item)
+        loadData()
         tableView.reloadData()
     }
 }
@@ -67,8 +93,11 @@ extension ChecklistTableViewController: UITableViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowItemDetail", let nav = segue.destinationViewController as? UINavigationController, let dc = nav.topViewController as? ItemDetailViewController {
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
-                let item = items[indexPath.row]
-                dc.item = item
+                if itemsWithoutCategory.count == 0 || indexPath.section != categories.count {
+                    dc.item = categories[indexPath.section].items[indexPath.row]
+                } else {
+                    dc.item = itemsWithoutCategory[indexPath.row]
+                }
             }
         } else if segue.identifier == "ManageCategories", let dc = segue.destinationViewController as? CategoryListViewController {
             dc.pageType = .ManageCategories
@@ -126,3 +155,5 @@ extension ChecklistTableViewController: ChecklistItemCellDelegate {
         tableView.reloadData()
     }
 }
+
+

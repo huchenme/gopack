@@ -95,9 +95,11 @@ class ItemDetailViewController: UITableViewController {
                 item.completed = self.completed
                 item.category = self.selectedCategory
             } else {
-                let newItem = Item(title: title)
+                let newItem = Item(value: ["title" : title])
                 newItem.completed = self.completed
                 newItem.category = self.selectedCategory
+                let maxOrder = maxItemOrderForCategory(self.selectedCategory) ?? -1
+                newItem.order = maxOrder + 1
                 realm.add(newItem)
             }
         }

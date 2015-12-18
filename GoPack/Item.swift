@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Item: Object, Equatable {
+class Item: Object, Equatable, Comparable {
     dynamic var id = NSUUID().UUIDString
     dynamic var title = ""
     dynamic var note: String? = ""
@@ -17,12 +17,7 @@ class Item: Object, Equatable {
     dynamic var hidden = false
     dynamic var category: Category?
     dynamic var order = -1
-    
-    convenience init(title: String, note: String? = nil) {
-        self.init()
-        self.title = title
-        self.note = note
-    }
+    dynamic var createdAt = NSDate()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -31,4 +26,8 @@ class Item: Object, Equatable {
 
 func ==(lhs: Item, rhs: Item) -> Bool {
     return lhs.id == rhs.id
+}
+
+func <(lhs: Item, rhs: Item) -> Bool {
+    return lhs.order < rhs.order
 }

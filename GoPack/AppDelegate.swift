@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let config = Realm.Configuration(
-        schemaVersion: 5,
+        schemaVersion: 6,
         migrationBlock: { migration, oldSchemaVersion in
             if oldSchemaVersion < 4 {
                 migration.enumerate(Category.className()) { oldObject, newObject in
@@ -37,11 +37,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     )
     
+    func populateDefaultItems() {
+        try! realm.write() {
+            realm.deleteAll()
+            
+            realm.add(Item(value: ["title" : "test title", "order": 0]))
+            realm.add(Item(value: ["title" : "test long long title with some long text and it should be long", "order": 1, "note": "test long long title with some long text and it should be long", "hidden": true]))
+            realm.add(Item(value: ["title" : "Battery", "order": 2, "completed": true]))
+            
+            realm.add(Category(value: ["title" : "category A", "order": 0]))
+            realm.add(Category(value: ["title" : "category B", "order": 1]))
+            realm.add(Category(value: ["title" : "category C", "order": 2]))
+        }
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Tell Realm to use this new configuration object for the default Realm
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
+        
+        //FIXME: remove in production
+//        populateDefaultItems()
         return true
     }
 
